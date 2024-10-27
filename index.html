@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
+
+    <script
+      src="https://kit.fontawesome.com/61b27e08e6.js"
+      crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="img/weather.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Breezy Weather App</title>
+  </head>
+  <body
+    style="background-image: url(../Weather-App/img/bg.jpg)"
+    class="min-h-screen bg-cover bg-center bg-no-repeat bg-fixed flex flex-col space-y-2 items-center justify-center font-poppins">
+    <div class="flex flex-row items-center space-x-4 mt-10">
+      <h1 class="font-bold text-xl">Breezy Weather App</h1>
+      <img class="w-[35px]" src="img/weather.png" alt="" />
+    </div>
+    <div
+      class="container bg-white bg-opacity-50 w-[370px] h-[620px] max-w-6xl mx-auto justify-center p-5 rounded-3xl md:w-[400px] md:h-[600px] delay-[300ms] duration-[600ms] taos:translate-y-[200px] taos:opacity-0"
+      data-taos-offset="300">
+      <!-- Head/Search -->
+      <div class="header flex flex-row items-center space-x-4">
+        <input
+          id="inputCity"
+          class="p-2 border-2 rounded-xl border-gray-500 w-full focus:outline-none"
+          type="text"
+          placeholder="Search City" />
+        <button
+          id="searchBtn"
+          class="bg-gray-300 px-4 py-2 rounded-full bg-opacity-70 hover:bg-gray-700 hover:text-white duration-500 transition-all">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <!-- Weather Section -->
+      <div class="weather-section hidden">
+        <div class="flex flex-row items-center justify-between p-2 mt-5">
+          <h1
+            class="text-xl font-bold text-black delay-[300ms] duration-[600ms] taos:translate-x-[-100%] taos:invisible"
+            data-taos-offset="400">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="cityValue">Manila</span>
+          </h1>
+          <h2
+            class="text-base delay-[300ms] duration-[600ms] taos:translate-x-[100%] taos:invisible"
+            data-taos-offset="400">
+            <span id="timeValue">Monday, 12:00 PM</span>
+          </h2>
+        </div>
+
+        <div
+          class="flex flex-col items-center justify-center mt-4 space-y-5 delay-[300ms] duration-[600ms] taos:translate-y-[100%] taos:invisible"
+          data-taos-offset="300">
+          <img
+            id="imageValue"
+            class="w-[200px] h-[200px] hover:scale-95 duration-500 transition-all cursor-pointer"
+            src="img/cloudy.png"
+            alt="Clear Sky" />
+          <h1 class="font-bold text-4xl">
+            <span id="tempValue">33</span><sup>°C</sup>
+          </h1>
+          <h2 class="text-base"><span id="descValue">Clear Sky</span></h2>
+        </div>
+
+        <div class="flex flex-row items-center justify-between mt-12">
+          <div class="flex flex-row items-center space-x-4">
+            <i class="fa-solid fa-droplet text-2xl"></i>
+            <div
+              class="flex flex-col delay-[300ms] duration-[600ms] taos:translate-x-[-100%] taos:invisible"
+              data-taos-offset="400">
+              <h1>Humidity</h1>
+              <h2 class="font-bold"><span id="humidityValue">50</span>%</h2>
+            </div>
+          </div>
+
+          <div class="flex flex-row items-center space-x-4">
+            <<i class="fa-solid fa-wind text-2xl"></i>
+            <div
+              class="flex flex-col delay-[300ms] duration-[600ms] taos:translate-x-[100%] taos:invisible"
+              data-taos-offset="400">
+              <h1>Wind Speed</h1>
+              <h2 class="font-bold"><span id="windValue">9.2</span> M/s</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Section -->
+      <div class="search-section">
+        <div class="flex flex-col items-center justify-center mt-10 space-y-10">
+          <img class="w-[200px]" src="img/searchWeather.png" alt="" />
+          <div class="flex flex-col items-center justify-center space-y-4">
+            <h1 class="text-2xl font-bold">Search City</h1>
+            <p class="text-base text-center">
+              Input city name to know weather status
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Error -->
+      <div class="search-error hidden">
+        <div class="flex flex-col items-center justify-center mt-10 space-y-10">
+          <img class="w-[200px]" src="img/404-error.png" alt="" />
+          <div class="flex flex-col items-center justify-center space-y-4">
+            <h1 class="text-2xl font-bold">Search Error</h1>
+            <p class="text-base text-center">
+              sorry, we can't find the city you're looking for
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="p-5 text-white">
+      <div
+        class="container max-w-6xl mx-auto flex flex-col items-center justify-center space-y-4">
+        <p class="text-sm">Josh Khovick Fermano &copy; 2024</p>
+
+        <div
+          class="text-black mt-10 flex justify-center md:justify-start dark:text-white">
+          <ul class="flex flex-row space-x-4 text-2xl">
+            <li class="hover:scale-105 transition-transform">
+              <a href="https://www.facebook.com/joshkhovick/" target="_blank"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+            </li>
+            <li class="hover:scale-105 transition-transform">
+              <a href="https://github.com/joshfermano" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+            </li>
+            <li class="hover:scale-105 transition-transform">
+              <a href="https://www.linkedin.com/in/joshfermano/" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </li>
+            <li class="hover:scale-105 transition-transform">
+              <a href="https://www.instagram.com/joshfermano_/" target="_blank"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+  </body>
+</html>
